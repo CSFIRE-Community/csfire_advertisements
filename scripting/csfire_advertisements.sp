@@ -1,10 +1,10 @@
 #include <sourcemod>
 #include <autoexecconfig>
 
+#define AD_COUNT sizeof(g_szAdvertisements)
+
 #define TAG_CLR "[\x10csfire.gg\x01]"
 #define TIME_INTERVAL 45.0
-// Ads counted from g_szAdvertisements
-#define AD_COUNT 3
 
 #pragma newdecls required
 #pragma semicolon 1
@@ -14,7 +14,7 @@ char g_szAdvertisements[][] =
 {
     "\x09Discord",
     "\x08Steam", 
-    "\x08Read rules!",
+    "\x08Read rules!"
 
 };
 
