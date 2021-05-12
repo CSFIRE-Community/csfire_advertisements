@@ -3,6 +3,8 @@
 
 #define TAG_CLR "[\x10csfire.gg\x01]"
 #define TIME_INTERVAL 45.0
+// Ads counted from g_szAdvertisements
+#define AD_COUNT 3
 
 #pragma newdecls required
 #pragma semicolon 1
@@ -60,7 +62,10 @@ public void PrepareAdvertisement() {
 
 public Action GetAdvertisement(Handle timer) {
 
-	int iRandom = eGetRandomInt(0, 6);
+	int AD_COUNT_REAL;
+	AD_COUNT_REAL=AD_COUNT-1;
+
+	int iRandom = eGetRandomInt(0, AD_COUNT_REAL);
 
 	if(g_cvEnableAdvertisements.IntValue == 1)
 	{
