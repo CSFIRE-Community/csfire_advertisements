@@ -21,7 +21,7 @@ public Plugin myinfo =
 	name = "csfire_advertisements",
 	author = "DRANIX",
 	description = "",
-	version = "1.0",
+	version = "2.0",
 	url = "https://github.com/dran1x/csfire_advertisements"
 };
 
