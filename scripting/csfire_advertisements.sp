@@ -1,5 +1,6 @@
 #include <sourcemod>
 #include <autoexecconfig>
+#include "files/stocks.sp"
 
 #define AD_COUNT sizeof(g_szAdvertisements)
 
@@ -43,10 +44,6 @@ public void OnPluginStart()
 
 public void OnConVarChanged(ConVar convar, const char[] oldValue, const char[] newValue) {
 
-	if(convar == g_cvEnableAdvertisements)
-    {
-        g_cvEnableAdvertisements.SetBool(view_as<bool>(StringToInt(newValue)));
-    }
 	if(StringToInt(newValue) == 1)	
 	{
 		PrepareAdvertisement();
@@ -74,17 +71,5 @@ public Action GetAdvertisement(Handle timer) {
 	} else {
 		return Plugin_Stop;
 	}
-
-}
-
-//thanks Entity
-stock int eGetRandomInt(int min = 0, int max = 2147483647) {
-
-    int random = GetURandomInt();
-
-    if(random == 0)
-        random++;
-
-    return RoundToCeil(float(random) / (float(2147483647) / float(max - min + 1))) + min - 1;
 
 }
