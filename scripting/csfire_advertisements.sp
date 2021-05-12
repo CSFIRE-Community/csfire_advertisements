@@ -1,11 +1,8 @@
 #include <sourcemod>
-#include <autoexecconfig>
 #include "files/stocks.sp"
 
-#define AD_COUNT sizeof(g_szAdvertisements)
-
 #define TAG_CLR "[\x10csfire.gg\x01]"
-#define TIME_INTERVAL 45.0
+#define TIMER_INTERVAL 5.0
 
 #pragma newdecls required
 #pragma semicolon 1
@@ -30,46 +27,16 @@ public Plugin myinfo =
 
 public void OnPluginStart() 
 {
-	//LoadTranslations("csfire_advertisements.phrases");
-
-	AutoExecConfig_SetFile("csfire_advertisements");
-
-	g_cvEnableAdvertisements = AutoExecConfig_CreateConVar("sm_advertisements", "0", "Enable or disabled server advertisments", FCVAR_PROTECTED, true, 0.0, true, 1.0);
-	g_cvEnableAdvertisements.AddChangeHook(OnConVarChanged);
-
-	AutoExecConfig_ExecuteFile();
-	AutoExecConfig_CleanFile();
+	g_cvEnableAdvertisements = CreateConVar("sm_advertisements", "0", "Enable or disabled server advertisments", FCVAR_PROTECTED, true, 0.0, true, 1.0);
+	CreateTimer(TIMER_INTERVAL, PrintAdvertisement, _, TIMER_REPEAT);
 
 }
 
-public void OnConVarChanged(ConVar convar, const char[] oldValue, const char[] newValue) {
+public Action PrintAdvertisement(Handle timer)
+{
+    if(g_cvEnableAdvertisements.IntValue == 1)
+        PrintToChatAll("%s %s", TAG_CLR, g_szAdvertisements[eGetRandomInt(0, sizeof(g_szAdvertisements)-1)]);
 
-	if(StringToInt(newValue) == 1)	
-	{
-		PrepareAdvertisement();
-	}
-
-}
-
-public void PrepareAdvertisement() {
-
-	CreateTimer(TIME_INTERVAL, GetAdvertisement, _, TIMER_REPEAT);
-
-}
-
-public Action GetAdvertisement(Handle timer) {
-
-	int AD_COUNT_REAL;
-	AD_COUNT_REAL=AD_COUNT-1;
-
-	int iRandom = eGetRandomInt(0, AD_COUNT_REAL);
-
-	if(g_cvEnableAdvertisements.IntValue == 1)
-	{
-		PrintToChatAll("%s %s", TAG_CLR, g_szAdvertisements[iRandom]);
-		return Plugin_Continue;
-	} else {
-		return Plugin_Stop;
-	}
-
+    return Plugin_Continue;
+	
 }
