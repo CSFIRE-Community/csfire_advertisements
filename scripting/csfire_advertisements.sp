@@ -2,12 +2,12 @@
 #include <autoexecconfig>
 
 #define TAG_CLR "[\x10csfire.gg\x01]"
+#define TIME_INTERVAL 45.0
 
 #pragma newdecls required
 #pragma semicolon 1
 
 ConVar g_cvEnableAdvertisements;
-float TIME_INTERVAL;
 char g_szAdvertisements[][] = 
 {
     "\x09Discord",
@@ -36,8 +36,6 @@ public void OnPluginStart()
 
 	AutoExecConfig_ExecuteFile();
 	AutoExecConfig_CleanFile();
-
-	TIME_INTERVAL=45.0;
 
 }
 
