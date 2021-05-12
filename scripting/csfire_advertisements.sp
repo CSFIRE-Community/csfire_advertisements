@@ -37,7 +37,7 @@ public void OnPluginStart()
 	AutoExecConfig_ExecuteFile();
 	AutoExecConfig_CleanFile();
 
-	TIME_INTERVAL=5.0;
+	TIME_INTERVAL=45.0;
 
 }
 
