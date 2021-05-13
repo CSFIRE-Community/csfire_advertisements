@@ -25,7 +25,7 @@ public Plugin myinfo =
 	url = "https://github.com/dran1x/csfire_advertisements"
 };
 
-public void OnPluginStart()  {
+public void OnPluginStart() {
 
 	g_cvEnableAdvertisements = CreateConVar("sm_advertisements", "0", "Enable or disabled server advertisments", FCVAR_PROTECTED, true, 0.0, true, 1.0);
 	CreateTimer(TIMER_INTERVAL, PrintAdvertisement, _, TIMER_REPEAT);
