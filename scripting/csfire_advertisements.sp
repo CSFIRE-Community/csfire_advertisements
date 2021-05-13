@@ -34,7 +34,7 @@ public void OnPluginStart()  {
 
 public Action PrintAdvertisement(Handle timer) {
 
-    if(g_cvEnableAdvertisements.IntValue == 1)
+    if(g_cvEnableAdvertisements.BoolValue)
         PrintToChatAll("%s %s", TAG_CLR, g_szAdvertisements[eGetRandomInt(0, sizeof(g_szAdvertisements)-1)]);
 
     return Plugin_Continue;
