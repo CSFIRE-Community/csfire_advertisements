@@ -69,7 +69,7 @@ public Action PrintAdvertisement(Handle Timer, int iClient) {
         	    PrintToChat(i, "%s%s", TAG_CLR, g_szAdvertisements[GetRandomIntEx(0, sizeof(g_szAdvertisements)-1)]);
             }
         }
-	}
+    }
     return Plugin_Continue;
 }
 
